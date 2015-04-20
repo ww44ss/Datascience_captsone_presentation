@@ -1,24 +1,29 @@
-tactical.Data Word Ripper toolkit
+tactical.Data Word RippeR
 ========================================================
-author: Winston A Saunders
-date: April 19, 2015
+left: 70%
+author: Winston A Saunders  
+date: April 19, 2015 
 
-Language Model:
-- _Scalable_ to large and multiple corpora for improved fidelity.
-- _Reducible_ n_gram analysis to accelerate client processing.
+- _Scalable_ to large corpora 
+- _Reducible_ accelerated processing.
 - _Selectable_ for context- or word-accuracy
 
-Word Ripper Toolkit Use Instructions
+***
+```{r, echo=FALSE}
+setwd("/Users/winstonsaunders/Documents/Datascience_captsone_presentation/")
+```
+![alt text](tactical.001.jpg)
+
+Word Ripper Use Instructions
 ========================================================
 
-Starting with defined Corpora use toolkit:
-- Corpus-RippeR _creates computable uniform text samples from very large corpora._    
-- n-gram-creatoR _builds individual n-gram frequency tables_  
-- n-gram-reduceR _combines & reduces mulitple n-gram tables_
-- Markov-CalculatoR _computes conditional probabilities._
+Toolkit:       
+- Corpus-RippeR: _creates computable uniform text samples from very large corpora._    
+- n-gram-creatoR: _builds individual n-gram frequency tables_  
+- n-gram-reduceR: _combines & reduces mulitple n-gram tables and computes conditional probabilities._
 
 Web Interface:
-- Word-RippeR _Web based interface providing_ __context__ _or nearest_ __word__ _based predictions._  
+- Word-RippeR _[Web based interface](https://ww44ss.shinyapps.io/Coursera_Shiny_Capstone/) providing_ __context__ _or nearest_ __word__ _based predictions._  
   
 __Provides Agile, flexible, and compact Natural Language Prediction.__
         

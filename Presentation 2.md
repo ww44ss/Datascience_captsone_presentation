@@ -1,24 +1,27 @@
-tactical.Data Word Ripper toolkit
+tactical.Data Word RippeR
 ========================================================
-author: Winston A Saunders
-date: April 19, 2015
+left: 70%
+author: Winston A Saunders  
+date: April 19, 2015 
 
-Language Model:
-- _Scalable_ to large and multiple corpora for improved fidelity.
-- _Reducible_ n_gram analysis to accelerate client processing.
+- _Scalable_ to large corpora 
+- _Reducible_ accelerated processing.
 - _Selectable_ for context- or word-accuracy
 
-Word Ripper Toolkit Use Instructions
+***
+
+![alt text](tactical.001.jpg)
+
+Word Ripper Use Instructions
 ========================================================
 
-Starting with defined Corpora use toolkit:
-- Corpus-RippeR _creates computable uniform text samples from very large corpora._    
-- n-gram-creatoR _builds individual n-gram frequency tables_  
-- n-gram-reduceR _combines & reduces mulitple n-gram tables_
-- Markov-CalculatoR _computes conditional probabilities._
+Toolkit:       
+- Corpus-RippeR: _creates computable uniform text samples from very large corpora._    
+- n-gram-creatoR: _builds individual n-gram frequency tables_  
+- n-gram-reduceR: _combines & reduces mulitple n-gram tables and computes conditional probabilities._
 
 Web Interface:
-- Word-RippeR _Web based interface providing_ __context__ _or nearest_ __word__ _based predictions._  
+- Word-RippeR _[Web based interface](https://ww44ss.shinyapps.io/Coursera_Shiny_Capstone/) providing_ __context__ _or nearest_ __word__ _based predictions._  
   
 __Provides Agile, flexible, and compact Natural Language Prediction.__
         
@@ -50,7 +53,7 @@ Faster interger addition and subraction
 
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Mon Apr 20 09:18:59 2015 -->
+<!-- Mon Apr 20 10:00:13 2015 -->
 <table border=1>
 <tr> <th>  </th> <th> n_gram </th> <th> frequency </th> <th> stem </th> <th> root </th> <th> root_freq </th>  </tr>
   <tr> <td align="right"> 51 </td> <td> you have a </td> <td align="right"> 3047 </td> <td> you have </td> <td> a </td> <td align="right"> 5554 </td> </tr>
@@ -73,7 +76,7 @@ __phrase__: You cook the best food I have ever  ...
 
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Mon Apr 20 09:19:11 2015 -->
+<!-- Mon Apr 20 10:00:25 2015 -->
 <table border=1>
 <tr> <th>  </th> <th> n_gram </th> <th> stem </th> <th> root </th> <th> log conditional prob </th>  </tr>
   <tr> <td align="right"> 8154 </td> <td> have ever seen </td> <td> have ever </td> <td> seen </td> <td align="right"> -1964 </td> </tr>
@@ -81,7 +84,7 @@ __phrase__: You cook the best food I have ever  ...
   <tr> <td align="right"> 27484 </td> <td> have ever had </td> <td> have ever </td> <td> had </td> <td align="right"> -3505 </td> </tr>
    </table>
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Mon Apr 20 09:19:11 2015 -->
+<!-- Mon Apr 20 10:00:25 2015 -->
 <table border=1>
 <tr> <th>  </th> <th> n_gram </th> <th> stem </th> <th> root </th> <th> log conditional prob </th>  </tr>
   <tr> <td align="right"> 53363 </td> <td> ever experienced </td> <td> ever </td> <td> experienced </td> <td align="right">   0 </td> </tr>
