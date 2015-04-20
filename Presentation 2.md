@@ -1,31 +1,30 @@
-tactical.Data Word RippeR
+Word RippeR     
 ========================================================
-left: 30%
-author: Winston A Saunders  
+left: 60%
+author: Winston A Saunders
+font-family: 'Helvetica'
 date: April 19, 2015 
+transition: rotate
    
   
 
 
+***
 ![alt text](tactical.001.jpg)
-*** 
 
-- _Scalable_ to large corpora 
-- _Reducible_ accelerated processing.
-- _Selectable_ for context- or word-accuracy
 
 Word Ripper Use Instructions
 ========================================================
+ 
+__Toolkit:__      
+- Corpus-RippeR:  <small>_creates computable text samples._</small>    
+- n-gram-creatoR:  <small>_builds n-gram frequency tables_</small>  
+- n-gram-reduceR:   <small>_combines & reduces mulitple n-gram tables._</small>
 
-Toolkit:       
-- Corpus-RippeR: _creates computable uniform text samples from very large corpora._    
-- n-gram-creatoR: _builds individual n-gram frequency tables_  
-- n-gram-reduceR: _combines & reduces mulitple n-gram tables and computes conditional probabilities._
-
-Web Interface:
-- Word-RippeR _[Web based interface](https://ww44ss.shinyapps.io/Coursera_Shiny_Capstone/) providing_ __context__ _or nearest_ __word__ _based predictions._  
+__Web Interface:__
+- Word-RippeR:  <small>[Web based interface](https://ww44ss.shinyapps.io/Coursera_Shiny_Capstone/) _providing_ __context__ _or_ __nearest word__ _based predictions._</small>    
   
-__Provides Agile, flexible, and compact Natural Language Prediction.__
+<center>__Agile, Flexible, and Compact Natural Language Prediction__</center>
         
 Algorithm Description
 ========================================================
@@ -37,59 +36,50 @@ The __Word-Match Algorithm__ as the following steps:
 4. Calculate conditional probabilities and sort results.   
 5. Select highest probability/highest order matched n-gram as best match.  
 
-The __Context Match Algorithm__ works similarly, except stop words are removed from the n-grams. 
+The __Context Match Algorithm__ works similarly, except stop words are removed from text and n-grams processing. 
 
-Compact Markov n_grams
+Markov n-gram look-up tables
 ========================================================
 
-Prediction is based on n_gram frequencies stored as
-
+Basing prediction on n-gram frequencies stored as integers
 
 
 ```r
 freq <- as.integer(2000*log10(word_count))
 ```
 
-Faster interger addition and subraction
+give faster look-up based conditional probability
 
 
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Mon Apr 20 10:08:13 2015 -->
+<!-- Mon Apr 20 12:15:04 2015 -->
 <table border=1>
-<tr> <th>  </th> <th> n_gram </th> <th> frequency </th> <th> stem </th> <th> root </th> <th> root_freq </th>  </tr>
-  <tr> <td align="right"> 51 </td> <td> you have a </td> <td align="right"> 3047 </td> <td> you have </td> <td> a </td> <td align="right"> 5554 </td> </tr>
-  <tr> <td align="right"> 52 </td> <td> the united states </td> <td align="right"> 3041 </td> <td> the united </td> <td> states </td> <td align="right"> 3564 </td> </tr>
-  <tr> <td align="right"> 53 </td> <td> rest of the </td> <td align="right"> 3031 </td> <td> rest of </td> <td> the </td> <td align="right"> 5855 </td> </tr>
-  <tr> <td align="right"> 54 </td> <td> if you are </td> <td align="right"> 3031 </td> <td> if you </td> <td> are </td> <td align="right"> 4869 </td> </tr>
-  <tr> <td align="right"> 55 </td> <td> to make a </td> <td align="right"> 3027 </td> <td> to make </td> <td> a </td> <td align="right"> 5554 </td> </tr>
-  <tr> <td align="right"> 56 </td> <td> it will be </td> <td align="right"> 3022 </td> <td> it will </td> <td> be </td> <td align="right"> 4914 </td> </tr>
+<tr> <th> n_gram </th> <th> frequency </th> <th> stem </th> <th> root </th> <th> root_freq </th>  </tr>
+  <tr> <td> is that the </td> <td align="right"> 2623 </td> <td> is that </td> <td> the </td> <td align="right"> 5855 </td> </tr>
+  <tr> <td> would be a </td> <td align="right"> 2860 </td> <td> would be </td> <td> a </td> <td align="right"> 5554 </td> </tr>
+  <tr> <td> to be in </td> <td align="right"> 2870 </td> <td> to be </td> <td> in </td> <td align="right"> 5393 </td> </tr>
+  <tr> <td> i miss you </td> <td align="right"> 2638 </td> <td> i miss </td> <td> you </td> <td align="right"> 5148 </td> </tr>
    </table>
 
+
+```r
+log_cond_prob <- frequency - root_freq
+```
 
 Example Results
 =============================================
 
 
   
-__phrase__: You cook the best food I have ever  ...   
-  ...seen  __(word based prediction)__    
-  ...experienced  __(context based prediction)__   
+__phrase__: we are in the best   ...   
+  ...of  __(word based prediction)__    
+  ...supporting  __(context based prediction)__   
 
 
-<!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Mon Apr 20 10:08:25 2015 -->
-<table border=1>
-<tr> <th>  </th> <th> n_gram </th> <th> stem </th> <th> root </th> <th> log conditional prob </th>  </tr>
-  <tr> <td align="right"> 8154 </td> <td> have ever seen </td> <td> have ever </td> <td> seen </td> <td align="right"> -1964 </td> </tr>
-  <tr> <td align="right"> 25907 </td> <td> have ever been </td> <td> have ever </td> <td> been </td> <td align="right"> -3371 </td> </tr>
-  <tr> <td align="right"> 27484 </td> <td> have ever had </td> <td> have ever </td> <td> had </td> <td align="right"> -3505 </td> </tr>
-   </table>
-<!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Mon Apr 20 10:08:25 2015 -->
-<table border=1>
-<tr> <th>  </th> <th> n_gram </th> <th> stem </th> <th> root </th> <th> log conditional prob </th>  </tr>
-  <tr> <td align="right"> 53363 </td> <td> ever experienced </td> <td> ever </td> <td> experienced </td> <td align="right">   0 </td> </tr>
-  <tr> <td align="right"> 107481 </td> <td> ever encountered </td> <td> ever </td> <td> encountered </td> <td align="right"> -636 </td> </tr>
-  <tr> <td align="right"> 3855 </td> <td> ever seen </td> <td> ever </td> <td> seen </td> <td align="right"> -1139 </td> </tr>
-   </table>
+
+
+
+![plot of chunk unnamed-chunk-8](Presentation 2-figure/unnamed-chunk-8-1.png) 
+
+
