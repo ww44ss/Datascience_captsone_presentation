@@ -1,18 +1,20 @@
 tactical.Data Word RippeR
 ========================================================
-left: 70%
+left: 30%
 author: Winston A Saunders  
 date: April 19, 2015 
+   
+  
 
-- _Scalable_ to large corpora 
-- _Reducible_ accelerated processing.
-- _Selectable_ for context- or word-accuracy
-
-***
 ```{r, echo=FALSE}
 setwd("/Users/winstonsaunders/Documents/Datascience_captsone_presentation/")
 ```
 ![alt text](tactical.001.jpg)
+*** 
+
+- _Scalable_ to large corpora 
+- _Reducible_ accelerated processing.
+- _Selectable_ for context- or word-accuracy
 
 Word Ripper Use Instructions
 ========================================================
