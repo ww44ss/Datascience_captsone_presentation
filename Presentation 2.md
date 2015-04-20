@@ -13,7 +13,7 @@ transition: rotate
 ![alt text](tactical.001.jpg)
 
 
-Word Ripper Use Instructions
+Word RippeR: Use Instructions
 ========================================================
  
 __Toolkit:__      
@@ -26,57 +26,61 @@ __Web Interface:__
   
 <center>__Agile, Flexible, and Compact Natural Language Prediction__</center>
         
-Algorithm Description
+Word RippeR: Algorithm 
 ========================================================
 
-The __Word-Match Algorithm__ as the following steps:  
-1. Extract last three words from text string.  
+The __Word-Match Algorithm__ has the following steps:  
+1. Extracts the last three words from text string.  
 2. Count matches to four-gram "stems".  
 3. Repeat for three- and two-grams.  
 4. Calculate conditional probabilities and sort results.   
-5. Select highest probability/highest order matched n-gram as best match.  
+5. Select highest probability of the highest order matched n-gram as best match.  
 
-The __Context Match Algorithm__ works similarly, except stop words are removed from text and n-grams processing. 
+The __Context Match Algorithm__ works similarly, except stop words are removed. 
 
-Markov n-gram look-up tables
+<center>__Algorithm Adapability for Different Use-Cases__</center>
+
+Word RippeR: n-gram tables
 ========================================================
 
-Basing prediction on n-gram frequencies stored as integers
+Computed n-gram data tables stored as integers
 
 
 ```r
 freq <- as.integer(2000*log10(word_count))
 ```
 
-give faster look-up based conditional probability
+giving faster look-up based probability
 
 
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Mon Apr 20 14:10:28 2015 -->
+<!-- Mon Apr 20 14:56:30 2015 -->
 <table border=1>
 <tr> <th> n_gram </th> <th> frequency </th> <th> stem </th> <th> root </th> <th> root_freq </th>  </tr>
-  <tr> <td> that it was </td> <td align="right"> 2766 </td> <td> that it </td> <td> was </td> <td align="right"> 4973 </td> </tr>
-  <tr> <td> to do with </td> <td align="right"> 2955 </td> <td> to do </td> <td> with </td> <td align="right"> 5031 </td> </tr>
-  <tr> <td> is a good </td> <td align="right"> 2671 </td> <td> is a </td> <td> good </td> <td align="right"> 4423 </td> </tr>
-  <tr> <td> a series of </td> <td align="right"> 2690 </td> <td> a series </td> <td> of </td> <td align="right"> 5479 </td> </tr>
+  <tr> <td> is not the </td> <td align="right"> 2622 </td> <td> is not </td> <td> the </td> <td align="right"> 5855 </td> </tr>
+  <tr> <td> am going to </td> <td align="right"> 2629 </td> <td> am going </td> <td> to </td> <td align="right"> 5618 </td> </tr>
+  <tr> <td> side of the </td> <td align="right"> 2851 </td> <td> side of </td> <td> the </td> <td align="right"> 5855 </td> </tr>
+  <tr> <td> to find a </td> <td align="right"> 2663 </td> <td> to find </td> <td> a </td> <td align="right"> 5554 </td> </tr>
    </table>
+
+analysis for high algorthim performance.
 
 
 ```r
 log_cond_prob <- frequency - root_freq
 ```
 
-Example Results
+Word RippeR: Example Results
 =============================================
 
 
   
-__phrase__: Theres a lady who's sure all that glitters is gold and ...   
-  ...silver  __(word based prediction)__    
-  ...medals  __(context based prediction)__   
+__Phrase__: There's a lady who's sure all that glitters is gold and ...   
+       ...silver    __(word based prediction)__    
+       ...medals    __(context based prediction)__   
 
-Prediction relies on different stem depending on matching method
+results differ based on stem and prediction method. Note that a lower log value corresponds to a higher probability. 
 
 
 
