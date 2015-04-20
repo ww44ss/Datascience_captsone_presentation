@@ -1,7 +1,7 @@
 Word RippeR     
 ========================================================
 left: 60%
-author: Winston A Saunders
+author: Winston A. Saunders
 font-family: 'Helvetica'
 date: April 19, 2015 
 transition: rotate
@@ -130,16 +130,14 @@ Example Results
                            pp <- four_gram[four_gram$stem==text_4,]
                            if(dim(pp)[1]==0) ppflag<-0
                            
-                }
-                else ppflag<-0
+                } else ppflag<-0
                 
    
                 qflag<-1
                 if (i>=2) {text_3<-paste(text_split[len-1],text_split[len])
                            q <- three_gram[three_gram$stem==text_3,]
                            if (dim(q)[1]==0) qflag<-0
-                }
-                else qflag<-0
+                } else qflag<-0
                         
                 
                 
@@ -148,21 +146,22 @@ Example Results
                            
                            r <- two_gram[two_gram$stem==text_2,]
                            if (dim(r)[1]==0) rflag<-0
-                }
-                else rflag<-0
+                } else rflag<-0
+                
+                
                 
                 ## default predicted word
                 ## if all else fails flip a coin between most probable words
-                if (rbinom(n=1,size=1,prob=0.35) ==1) predicted_word<-"the"
-                    else if (rbinom(n=1,size=1,prob=0.52) ==1) predicted_word<-"to"
-                        else predicted_word<-"and"
+                if (rbinom(n=1,size=1,prob=0.35) ==1) predicted_word<-"the" else 
+                        if (rbinom(n=1,size=1,prob=0.52) ==1) predicted_word<-"to" else 
+                                predicted_word<-"and"
             
                 # Use back-off to tune predict word choice                 
                 if (rflag==1){
                         r$cond<-r$frequency - r$root_freq
                         r<-r[order(r$cond, decreasing=TRUE),]
                         predicted_word<-r$root[1]
-                        predicted_phrase<-r[1:8,]
+                        predicted_phrase<-r[1:min(8, dim(r)[1]),]
                         
                         
                 }
@@ -171,7 +170,7 @@ Example Results
                         q$cond<-q$frequency - q$root_freq
                         q<-q[order(r$cond, decreasing=TRUE),]
                         predicted_word<-q$root[1]
-                        predicted_phrase<-q[1:8,]
+                        predicted_phrase<-q[1:min(8, dim(q)[1]),]
                         
                 }
 
@@ -180,7 +179,7 @@ Example Results
                         pp$cond<-pp$frequency - pp$root_freq
                         pp<-pp[order(pp$cond, decreasing=TRUE),]
                         predicted_word<-pp$root[1]
-                        predicted_phrase<-pp[1:8,]
+                        predicted_phrase<-pp[1:min(8, dim(pp)[1]),]
 
                 }
                 
@@ -231,7 +230,7 @@ Example Results
                         r$cond<-r$frequency - r$root_freq
                         r<-r[order(r$cond, decreasing=TRUE),]
                         predicted_word<-r$root[1]
-                        predicted_phrase<-r[1:8,]
+                        predicted_phrase<-r[1:min(8, dim(r)[1]),]
                         
                         
                 }
@@ -241,7 +240,7 @@ Example Results
                         q$cond<-q$frequency - q$root_freq
                         q<-q[order(r$cond, decreasing=TRUE),]
                         predicted_word<-q$root[1]
-                        predicted_phrase<-q[1:8,]
+                        predicted_phrase<-q[1:min(8, dim(q)[1]),]
                         
                 }
                 
@@ -250,7 +249,7 @@ Example Results
                 
 
 
-sample_phrase <- "we are in the best  "
+sample_phrase <- "Theres a lady who's sure all that glitters is gold and"
 
 a<-predictor_word(sample_phrase)
 b<-predictor_function(sample_phrase)
@@ -258,8 +257,8 @@ b<-predictor_function(sample_phrase)
 a<-a[complete.cases(a),]
 b<-b[complete.cases(b),]
 
-astore<-a[1:5,]
-bstore<-b[1:5,]
+astore<-a
+bstore<-b
 
 colnames(astore)[8]<-"log_cond_prob"
 colnames(bstore)[8]<-"log_cond_prob"
@@ -288,17 +287,18 @@ __phrase__: `r sample_phrase` ...
   ...`r a$root[1]`  __(word based prediction)__    
   ...`r b$root[1]`  __(context based prediction)__   
 
+Prediction relies on different stem depending on matching method
 
 ```{r, echo=FALSE, results='asis' }
 require(xtable)
 
-# print(xtable(as.data.frame(a)), type="html", include.rownames = FALSE)
-# print(xtable(as.data.frame(b)), type="html", include.rownames = FALSE)
+#print(xtable(as.data.frame(a)), type="html", include.rownames = FALSE)
+#print(xtable(as.data.frame(b)), type="html", include.rownames = FALSE)
 
 ```
 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE,fig.width=12, fig.height=6, fig.show='hold', fig.align='center'}
 library(ggplot2)
 
 abstore<-rbind(astore, bstore)
@@ -306,6 +306,7 @@ abstore<-rbind(astore, bstore)
 p <- ggplot(abstore, aes(x=root, y = log_cond_prob, fill=(root_freq)))
 p <- p + geom_bar(stat="identity") + coord_flip()
 p <- p + facet_grid(.~stem)
+#p <- p + scale_color_gradient2(midpoint=-1000, low="blue", mid="white", high="red" )
 p <- p + ggtitle(paste("conditional probs for word- and context- prediction"))
 p
 

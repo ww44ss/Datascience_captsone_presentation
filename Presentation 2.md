@@ -1,7 +1,7 @@
 Word RippeR     
 ========================================================
 left: 60%
-author: Winston A Saunders
+author: Winston A. Saunders
 font-family: 'Helvetica'
 date: April 19, 2015 
 transition: rotate
@@ -53,13 +53,13 @@ give faster look-up based conditional probability
 
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Mon Apr 20 12:15:04 2015 -->
+<!-- Mon Apr 20 14:10:28 2015 -->
 <table border=1>
 <tr> <th> n_gram </th> <th> frequency </th> <th> stem </th> <th> root </th> <th> root_freq </th>  </tr>
-  <tr> <td> is that the </td> <td align="right"> 2623 </td> <td> is that </td> <td> the </td> <td align="right"> 5855 </td> </tr>
-  <tr> <td> would be a </td> <td align="right"> 2860 </td> <td> would be </td> <td> a </td> <td align="right"> 5554 </td> </tr>
-  <tr> <td> to be in </td> <td align="right"> 2870 </td> <td> to be </td> <td> in </td> <td align="right"> 5393 </td> </tr>
-  <tr> <td> i miss you </td> <td align="right"> 2638 </td> <td> i miss </td> <td> you </td> <td align="right"> 5148 </td> </tr>
+  <tr> <td> that it was </td> <td align="right"> 2766 </td> <td> that it </td> <td> was </td> <td align="right"> 4973 </td> </tr>
+  <tr> <td> to do with </td> <td align="right"> 2955 </td> <td> to do </td> <td> with </td> <td align="right"> 5031 </td> </tr>
+  <tr> <td> is a good </td> <td align="right"> 2671 </td> <td> is a </td> <td> good </td> <td align="right"> 4423 </td> </tr>
+  <tr> <td> a series of </td> <td align="right"> 2690 </td> <td> a series </td> <td> of </td> <td align="right"> 5479 </td> </tr>
    </table>
 
 
@@ -72,14 +72,15 @@ Example Results
 
 
   
-__phrase__: we are in the best   ...   
-  ...of  __(word based prediction)__    
-  ...supporting  __(context based prediction)__   
+__phrase__: Theres a lady who's sure all that glitters is gold and ...   
+  ...silver  __(word based prediction)__    
+  ...medals  __(context based prediction)__   
+
+Prediction relies on different stem depending on matching method
 
 
 
 
-
-![plot of chunk unnamed-chunk-8](Presentation 2-figure/unnamed-chunk-8-1.png) 
+<img src="Presentation 2-figure/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" />
 
 
