@@ -1,15 +1,22 @@
 Word RippeR     
 ========================================================
-left: 60%
-author: Winston A. Saunders
-font-family: 'Helvetica'
-date: April 19, 2015 
-transition: rotate
+left: 60%  
+font-family: 'Helvetica'  
+transition: rotate  
+
+<br>  
+Winston A. Saunders  
+April 19, 2015   
+<br>  
+<small>R version 3.2.0 (2015-04-16)</small>  
+
    
   
 
 
 ***
+<br>
+<br>
 ![alt text](tactical.001.jpg)
 
 
@@ -17,7 +24,7 @@ Word RippeR: Use Instructions
 ========================================================
  
 __Toolkit:__      
-- Corpus-RippeR:  <small>_creates computable text samples._</small>    
+- Corpus-RippeR:  <small>_creates computable corpus-based text samples._</small>    
 - n-gram-creatoR:  <small>_builds n-gram frequency tables_</small>  
 - n-gram-reduceR:   <small>_combines & reduces mulitple n-gram tables._</small>
 
@@ -29,14 +36,18 @@ __Web Interface:__
 Word RippeR: Algorithm 
 ========================================================
 
-The __Word-Match Algorithm__ has the following steps:  
+__Word-Match Algorithm__ has the following steps:  
+<small>  
+<br>
 1. Extracts the last three words from text string.  
 2. Count matches to four-gram "stems".  
 3. Repeat for three- and two-grams.  
 4. Calculate conditional probabilities and sort results.   
 5. Select highest probability of the highest order matched n-gram as best match.  
-
-The __Context Match Algorithm__ works similarly, except stop words are removed. 
+</small>  
+<br>
+<br>
+__Context Match Algorithm__ works similarly, except stop words are removed from n-grams. 
 
 <center>__Algorithm Adapability for Different Use-Cases__</center>
 
@@ -50,21 +61,21 @@ Computed n-gram data tables stored as integers
 freq <- as.integer(2000*log10(word_count))
 ```
 
-giving faster look-up based probability
+giving faster look-up based probability analysis
 
 
 
-<!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Mon Apr 20 14:56:30 2015 -->
+<!-- html table generated in R 3.2.0 by xtable 1.7-4 package -->
+<!-- Mon Apr 27 23:16:26 2015 -->
 <table border=1>
 <tr> <th> n_gram </th> <th> frequency </th> <th> stem </th> <th> root </th> <th> root_freq </th>  </tr>
-  <tr> <td> is not the </td> <td align="right"> 2622 </td> <td> is not </td> <td> the </td> <td align="right"> 5855 </td> </tr>
-  <tr> <td> am going to </td> <td align="right"> 2629 </td> <td> am going </td> <td> to </td> <td align="right"> 5618 </td> </tr>
-  <tr> <td> side of the </td> <td align="right"> 2851 </td> <td> side of </td> <td> the </td> <td align="right"> 5855 </td> </tr>
-  <tr> <td> to find a </td> <td align="right"> 2663 </td> <td> to find </td> <td> a </td> <td align="right"> 5554 </td> </tr>
+  <tr> <td> i dont want </td> <td align="right"> 2868 </td> <td> i dont </td> <td> want </td> <td align="right"> 4201 </td> </tr>
+  <tr> <td> front of the </td> <td align="right"> 2647 </td> <td> front of </td> <td> the </td> <td align="right"> 5855 </td> </tr>
+  <tr> <td> but i think </td> <td align="right"> 2711 </td> <td> but i </td> <td> think </td> <td align="right"> 4273 </td> </tr>
+  <tr> <td> the middle of </td> <td align="right"> 2850 </td> <td> the middle </td> <td> of </td> <td align="right"> 5479 </td> </tr>
    </table>
 
-analysis for high algorthim performance.
+and higher algorthim performance.
 
 
 ```r
@@ -80,7 +91,7 @@ __Phrase__: There's a lady who's sure all that glitters is gold and ...
        ...silver    __(word based prediction)__    
        ...medals    __(context based prediction)__   
 
-results differ based on stem and prediction method. Note that a lower log value corresponds to a higher probability. 
+In the root-stem graph below, a _lower_ log value corresponds to a _higher_ probability. 
 
 
 

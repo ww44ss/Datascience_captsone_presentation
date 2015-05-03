@@ -1,10 +1,15 @@
 Word RippeR     
 ========================================================
-left: 60%
-author: Winston A. Saunders
-font-family: 'Helvetica'
-date: April 19, 2015 
-transition: rotate
+left: 60%  
+font-family: 'Helvetica'  
+transition: rotate  
+
+<br>  
+Winston A. Saunders  
+April 19, 2015   
+<br>  
+<small>`r R.version.string`</small>  
+
    
   
 
@@ -12,6 +17,8 @@ transition: rotate
 setwd("/Users/winstonsaunders/Documents/Datascience_captsone_presentation/")
 ```
 ***
+<br>
+<br>
 ![alt text](tactical.001.jpg)
 
 
@@ -19,7 +26,7 @@ Word RippeR: Use Instructions
 ========================================================
  
 __Toolkit:__      
-- Corpus-RippeR:  <small>_creates computable text samples._</small>    
+- Corpus-RippeR:  <small>_creates computable corpus-based text samples._</small>    
 - n-gram-creatoR:  <small>_builds n-gram frequency tables_</small>  
 - n-gram-reduceR:   <small>_combines & reduces mulitple n-gram tables._</small>
 
@@ -31,14 +38,18 @@ __Web Interface:__
 Word RippeR: Algorithm 
 ========================================================
 
-The __Word-Match Algorithm__ has the following steps:  
+__Word-Match Algorithm__ has the following steps:  
+<small>  
+<br>
 1. Extracts the last three words from text string.  
 2. Count matches to four-gram "stems".  
 3. Repeat for three- and two-grams.  
 4. Calculate conditional probabilities and sort results.   
 5. Select highest probability of the highest order matched n-gram as best match.  
-
-The __Context Match Algorithm__ works similarly, except stop words are removed. 
+</small>  
+<br>
+<br>
+__Context Match Algorithm__ works similarly, except stop words are removed from n-grams. 
 
 <center>__Algorithm Adapability for Different Use-Cases__</center>
 
@@ -51,7 +62,7 @@ Computed n-gram data tables stored as integers
 freq <- as.integer(2000*log10(word_count))
 ```
 
-giving faster look-up based probability
+giving faster look-up based probability analysis
 
 ```{r, echo=FALSE, results='asis'}
 directory <- "/Users/winstonsaunders/Documents/Coursera Swiftkey Data/final/en_US/markov_n_grams/"
@@ -65,7 +76,7 @@ three_gram$X<-NULL
 print(xtable(three_gram[sample(50:400, 4),]), type="html", include.rownames = FALSE)
 ```
 
-analysis for high algorthim performance.
+and higher algorthim performance.
 
 ```{r, eval=FALSE}
 log_cond_prob <- frequency - root_freq
@@ -291,7 +302,7 @@ __Phrase__: `r sample_phrase` ...
        ...`r a$root[1]`    __(word based prediction)__    
        ...`r b$root[1]`    __(context based prediction)__   
 
-results differ based on stem and prediction method. Note that a lower log value corresponds to a higher probability. 
+In the root-stem graph below, a _lower_ log value corresponds to a _higher_ probability. 
 
 ```{r, echo=FALSE, results='asis' }
 require(xtable)
